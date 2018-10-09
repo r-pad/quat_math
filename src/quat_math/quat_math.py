@@ -10,7 +10,7 @@ from . import transformations as tf_trans
 # inverse transform sampling proportional to sin2(theta)
 _x = np.linspace(0, np.pi, 256)
 _cdf_norm = np.pi/2.
-_cdf_sin2 = 1./2. * (_x - np.cos(_x)*np.sin(_x))
+_cdf_sin2 = 1./2. * (_x - np.sin(_x))
 _cdf_sin2 /= _cdf_norm
 _inv_cdf = interpolate.interp1d(_cdf_sin2, _x)
 
