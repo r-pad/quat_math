@@ -45,6 +45,12 @@ def quat2AxisAngle(q):
         axis = np.array([0,0,1])
     return axis, angle
 
+def quaternionBatchMultiply(q2, q1):
+    return np.stack([ q2[:,0]*q1[:,3] + q2[:,1]*q1[:,2] - q2[:,2]*q1[:,1] + q2[:,3]*q1[:,0],
+                     -q2[:,0]*q1[:,2] + q2[:,1]*q1[:,3] + q2[:,2]*q1[:,0] + q2[:,3]*q1[:,1],
+                      q2[:,0]*q1[:,1] - q2[:,1]*q1[:,0] + q2[:,2]*q1[:,3] + q2[:,3]*q1[:,2],
+                     -q2[:,0]*q1[:,0] - q2[:,1]*q1[:,1] - q2[:,2]*q1[:,2] + q2[:,3]*q1[:,3]], dim=1)
+
 def angularPDF(theta):
     return 2/np.pi * np.sin(theta/2.0)**2
 
