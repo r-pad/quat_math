@@ -34,5 +34,5 @@ Random Quaternion's Near a Quaternion
 -----
 Samples a orientation quaternion from a uniform random distribution within theta of the q
 ```python
-q_near = quat_math.randomQuatNear(q, theta)
+q_near, q_delta = quat_math.randomQuatNear(q, theta)
 ```
